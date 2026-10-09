@@ -23,19 +23,25 @@ public class ConfiguracaoSeguranca implements UserDetailsService {
         this.repositorioUsuarios = repositorioUsuarios;
     }
 
-    // quais paginas da para acessar sem login
+    // quais paginas da para acessar pra cada usuario
     @Bean
     public SecurityFilterChain configurarAcessos(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(regras -> regras
                         .requestMatchers("/cadastro").permitAll()
+                        .requestMatchers("/admin/**").hasRole("Admin")
+                        .requestMatchers("/vip/**").hasAnyRole("UsuarioVIP", "Admin")
+                        .requestMatchers("/", "/inicio").authenticated()
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
-                        .defaultSuccessUrl("/", true)
+                        .defaultSuccessUrl("/inicio", true)
                         .permitAll()
                 )
-                .logout(LogoutConfigurer::permitAll);
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/login?logout")
+                        .permitAll()
+                );
 
         return http.build();
     }
