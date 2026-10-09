@@ -20,7 +20,7 @@ public class UsuarioService {
         this.codificadorSenha = codificadorSenha;
     }
 
-    public Usuario cadastrarUsuario(String nome, String email, String senha) {
+    public void cadastrarUsuario(String nome, String email, String senha) {
 
         // padroniza os emails em minusculo
         email = email.trim().toLowerCase();
@@ -41,6 +41,6 @@ public class UsuarioService {
         usuario.setPapel("UsuarioComum");
         usuario.setAtivo(true);
 
-        return repositorioUsuarios.save(usuario);
+        repositorioUsuarios.save(usuario);
     }
 }
