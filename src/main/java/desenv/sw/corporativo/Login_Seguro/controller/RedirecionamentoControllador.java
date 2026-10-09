@@ -26,4 +26,23 @@ public class RedirecionamentoControllador {
 
         return "redirect:/comum/inicio";
     }
+
+    // mostra a pagina inicial do usuario comum
+    @GetMapping("/comum/inicio")
+    public String mostrarInicioComum() {
+        return "comum";
+    }
+
+    // mostra a pagina inicial do usuario vip
+    @GetMapping("/vip/inicio")
+    public String mostrarInicioVip() {
+        return "vip";
+    }
+
+    // mostra a pagina inicial do usuario admin
+    @GetMapping("/admin/inicio")
+    public String mostrarInicioAdmin() {
+        return "admin";
+    }
+
 }
