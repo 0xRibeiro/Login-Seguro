@@ -27,6 +27,7 @@ public class ConfiguracaoSeguranca implements UserDetailsService {
         http
                 .authorizeHttpRequests(regras -> regras
                         .requestMatchers("/cadastro").permitAll()
+                        .requestMatchers("/css/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("Admin")
                         .requestMatchers("/vip/**").hasAnyRole("UsuarioVIP", "Admin")
                         .requestMatchers("/comum/**").hasAnyRole("UsuarioComum", "UsuarioVIP", "Admin")
@@ -34,6 +35,8 @@ public class ConfiguracaoSeguranca implements UserDetailsService {
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
+                        .loginPage("/login")
+                        .usernameParameter("email")
                         .defaultSuccessUrl("/inicio", true)
                         .permitAll()
                 )

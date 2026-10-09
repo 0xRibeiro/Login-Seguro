@@ -51,4 +51,10 @@ public class UsuarioController {
             return "cadastro";
         }
     }
+
+    @GetMapping("/login")
+    public String mostrarLogin() {
+        return "login";
+    }
+
 }

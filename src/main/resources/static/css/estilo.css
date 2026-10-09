@@ -16,7 +16,6 @@ body.admin {
     --cor: #0756a5;
 }
 
-/* Cabecalho */
 header {
     background: var(--cor);
     color: white;
@@ -28,7 +27,6 @@ header h1 {
     font-size: 30px;
 }
 
-/* Conteudo */
 main {
     max-width: 1100px;
     margin: 40px auto;
@@ -38,7 +36,6 @@ main {
     box-shadow: 0 2px 8px #00000010;
 }
 
-/* Textos e formularios */
 input, select, button {
     box-sizing: border-box;
     padding: 14px 18px;
@@ -61,13 +58,11 @@ button:hover {
     opacity: 0.85;
 }
 
-/* Campos de formulario */
 input, select {
     min-width: 220px;
     max-width: 100%;
 }
 
-/* Links */
 a {
     color: var(--cor);
     font-size: 16px;
@@ -92,12 +87,10 @@ th {
     font-size: 17px;
 }
 
-/* Espaco entre os formularios da tabela */
 td form {
     margin: 0;
 }
 
-/* Ajustes para telas menores */
 @media (max-width: 700px) {
     main {
         margin: 15px;
@@ -116,5 +109,82 @@ td form {
     input, select {
         min-width: 0;
         width: 100%;
+    }
+}
+
+   body.pagina-login {
+       min-height: 100vh;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       padding: 24px;
+       box-sizing: border-box;
+   }
+
+.pagina-login .cartao-login {
+    width: 100%;
+    max-width: 420px;
+    margin: 0;
+    padding: 36px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.pagina-login .cartao-login h1 {
+    margin-top: 0;
+    color: var(--cor);
+    text-align: center;
+}
+
+.pagina-login .cartao-login > p:first-of-type {
+    margin-bottom: 28px;
+    color: #666;
+    text-align: center;
+}
+
+.pagina-login .formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pagina-login .formulario-login label {
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+.pagina-login .formulario-login input {
+    width: 100%;
+    min-width: 0;
+    margin: 0 0 12px;
+}
+
+.pagina-login .formulario-login button {
+    width: 100%;
+    margin: 8px 0 0;
+}
+
+.pagina-login .mensagem-erro,
+.pagina-login .mensagem-sucesso {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagina-login .mensagem-erro {
+    color: #b91c1c;
+}
+
+.pagina-login .mensagem-sucesso {
+    color: #167345;
+}
+
+.pagina-login .link-cadastro {
+    margin-top: 24px;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .pagina-login .cartao-login {
+        padding: 24px;
     }
 }
