@@ -1,5 +1,7 @@
 package desenv.sw.corporativo.Login_Seguro.model;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,9 +12,14 @@ public class Usuario {
     @Id
     private String id;
 
+    @NotBlank(message = "O nome é obrigatorio")
     private String nome;
+    @NotBlank(message = "O email é obrigatorio")
+    @Email(message = "digite um email válido")
     private String email;
+    @NotBlank(message = "A senha é obrigatoria")
     private String senha;
+
     // o papel padrão do usuário será o comum.
     private String papel = "UsuarioComum";
     // ativo determina se a conta foi apagada ou não
