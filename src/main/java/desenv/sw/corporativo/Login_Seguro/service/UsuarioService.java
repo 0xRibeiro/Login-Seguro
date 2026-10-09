@@ -43,4 +43,27 @@ public class UsuarioService {
 
         repositorioUsuarios.save(usuario);
     }
+
+    // lista os usuarios cadastrados no sistema.
+    public java.util.List<Usuario> listarUsuarios() {
+        return repositorioUsuarios.findAll();
+    }
+
+    // altera o papel de um usuario cadastrado. metodo de admin
+    public Usuario alterarPapel(String id, String papel) {
+
+        if (!papel.equals("UsuarioComum")
+                && !papel.equals("UsuarioVIP")
+                && !papel.equals("Admin")) {
+            throw new IllegalArgumentException("Papel invalido.");
+        }
+
+        Usuario usuario = repositorioUsuarios.findById(id)
+                .orElseThrow(() ->
+                        new IllegalArgumentException("Usuario nao encontrado."));
+
+        usuario.setPapel(papel);
+
+        return repositorioUsuarios.save(usuario);
+    }
 }

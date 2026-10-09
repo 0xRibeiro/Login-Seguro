@@ -4,12 +4,10 @@ import desenv.sw.corporativo.Login_Seguro.model.Usuario;
 import desenv.sw.corporativo.Login_Seguro.repository.UsuarioRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -31,6 +29,7 @@ public class ConfiguracaoSeguranca implements UserDetailsService {
                         .requestMatchers("/cadastro").permitAll()
                         .requestMatchers("/admin/**").hasRole("Admin")
                         .requestMatchers("/vip/**").hasAnyRole("UsuarioVIP", "Admin")
+                        .requestMatchers("/comum/**").hasAnyRole("UsuarioComum", "UsuarioVIP", "Admin")
                         .requestMatchers("/", "/inicio").authenticated()
                         .anyRequest().authenticated()
                 )
