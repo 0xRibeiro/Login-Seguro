@@ -20,8 +20,8 @@ public class RedirecionamentoControllador {
         }
 
         if (autenticacao.getAuthorities().stream()
-                .anyMatch(papel -> Objects.equals(papel.getAuthority(), "ROLE_UsuarioVIP"))) {
-            return "redirect:/vip/inicio";
+                .anyMatch(papel -> Objects.equals(papel.getAuthority(), "ROLE_UsuarioTecnico"))) {
+            return "redirect:/tecnico/inicio";
         }
 
         return "redirect:/comum/inicio";
@@ -34,9 +34,9 @@ public class RedirecionamentoControllador {
     }
 
     // mostra a pagina inicial do usuario vip
-    @GetMapping("/vip/inicio")
+    @GetMapping("/tecnico/inicio")
     public String mostrarInicioVip() {
-        return "vip";
+        return "tecnico";
     }
 
     // mostra a pagina inicial do usuario admin
